@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1048571479674",
+    "project_id": "cypress-e7550",
+    "storage_bucket": "cypress-e7550.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048571479674:android:7619779bace473d9ee9dc3",
+        "android_client_info": {
+          "package_name": "com.example.cypress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1_2MqZTnpMre_C_6FnUH8umKPn6mMEPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
