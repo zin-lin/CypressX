@@ -15,10 +15,11 @@ Annex CypressX
 - Replace OpenAI and Stripe as well as firebase key with yours
 - to run and install app 
   - ```shell
-flutter run --release```
+    flutter run --release
+    ```
 - to debug
-  - ```shell
-flutter run --debug
-```
+  - ```shell 
+    flutter run --debug
+    ```
 
 
