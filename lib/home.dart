@@ -7,13 +7,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          image:  DecorationImage(image: AssetImage("assets/bg.png"),
-              fit: BoxFit.cover
-          )
-      ),
-      child: SafeArea(
+    return SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -234,7 +228,7 @@ class Home extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             width: 350,
                             height: 50,
-                            decoration:  BoxDecoration(color:  Color.fromARGB(230, 255, 91, 91),
+                            decoration:  BoxDecoration(color:  const Color.fromARGB(230, 255, 91, 91),
                                 boxShadow: [
                                   styles.shadow(const Color.fromARGB(60, 255, 34, 34))
                                 ],
@@ -261,7 +255,6 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

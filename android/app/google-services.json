@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1048571479674:android:7619779bace473d9ee9dc3",
+        "mobilesdk_app_id": "1:1048571479674:android:073b82bdea5d8817ee9dc3",
         "android_client_info": {
-          "package_name": "com.example.cypress"
+          "package_name": "com.annex.xox"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1048571479674-imimmg5torhtr0dtbc92r6pqg5jkc7pi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC1_2MqZTnpMre_C_6FnUH8umKPn6mMEPk"
@@ -20,7 +25,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048571479674-imimmg5torhtr0dtbc92r6pqg5jkc7pi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048571479674:android:7619779bace473d9ee9dc3",
+        "android_client_info": {
+          "package_name": "com.example.cypress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048571479674-imimmg5torhtr0dtbc92r6pqg5jkc7pi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1_2MqZTnpMre_C_6FnUH8umKPn6mMEPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048571479674-imimmg5torhtr0dtbc92r6pqg5jkc7pi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

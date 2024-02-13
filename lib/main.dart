@@ -1,16 +1,17 @@
-import 'package:cypress/home.dart';
+import 'package:cypress/auth/auth.dart';
+import 'package:cypress/wrapper.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'styles.dart' as styles;
 
-const primary = Color(0Xff071322);
-
-void main() {   
-    
+const primary = styles.primary;
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
-
 
 const themeColor  = Color.fromARGB(255, 7, 19, 22);
 class MyApp extends StatelessWidget {
@@ -28,36 +29,43 @@ class MyApp extends StatelessWidget {
 
     
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Annex Cypress',
-      theme: ThemeData(
-        fontFamily: "annex",
-        
-        appBarTheme: const AppBarTheme(
-          backgroundColor: primary
+    return MultiProvider(
+      providers: [
+        Provider<UserData>(
+          create: (_) => UserData(),
         ),
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: primary),
-        useMaterial3: true,
-          textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white), // For body text
-      ),),
-      home: const MyHomePage(title: 'Annex:Cypress'),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Annex Cypress',
+        theme: ThemeData(
+          fontFamily: "annex",
+
+          appBarTheme: const AppBarTheme(
+            backgroundColor: primary
+          ),
+          // This is the theme of your application.
+          //
+          // TRY THIS: Try running your application with "flutter run". You'll see
+          // the application has a purple toolbar. Then, without quitting the app,
+          // try changing the seedColor in the colorScheme below to Colors.green
+          // and then invoke "hot reload" (save your changes or press the "hot
+          // reload" button in a Flutter-supported IDE, or press "r" if you used
+          // the command line to start the app).
+          //
+          // Notice that the counter didn't reset back to zero; the application
+          // state is not lost during the reload. To reset the state, use hot
+          // restart instead.
+          //
+          // This works for code too, not just values: Most code changes can be
+          // tested with just a hot reload.
+          colorScheme: ColorScheme.fromSeed(seedColor: primary),
+          useMaterial3: true,
+            textTheme: const TextTheme(
+            bodyMedium: TextStyle(color: Colors.white), // For body text
+        ),),
+        home: const MyHomePage(title: 'Annex:Cypress'),
+      ),
     );
   }
 }
@@ -94,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -102,19 +111,31 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       backgroundColor: primary,
-      
-      body: const Home(),
-      
+
+      body: Container(
+        width: screenSize.width,
+        height: screenSize.height,
+        decoration: const BoxDecoration(
+        image:  DecorationImage(image: AssetImage("assets/bg.png"),
+        fit: BoxFit.cover
+        )
+        ),
+        child: const Wrapper() ,),
+
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
 
 
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){
+          UserData().signOut().catchError((err)=>{
+            // Do Abs Nothing
+          });
+        },
         backgroundColor: const Color.fromARGB(255, 8, 26, 31),
         foregroundColor: Colors.cyan,
         tooltip: 'Increment',
-        child: const Icon(Icons.person),
+        child: const Icon(Icons.question_answer),
 
 
       ), // This trailing comma makes auto-formatting nicer for build meth// ods.
