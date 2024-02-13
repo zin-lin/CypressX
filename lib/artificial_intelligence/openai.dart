@@ -2,7 +2,7 @@ import "package:http/http.dart" as http;
 import "dart:convert";
 
 final List<Map<String, String>> messages = [];
-const String OpenAiKey = 'ChatGPT-Key';
+const String openAiKey = 'ChatGPT-Key';
 
 Future<String> chatGPTAPI(String prompt) async {
   messages.add({
@@ -14,7 +14,7 @@ Future<String> chatGPTAPI(String prompt) async {
       Uri.parse('https://api.openai.com/v1/chat/completions'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $OpenAiKey',
+        'Authorization': 'Bearer $openAiKey',
       },
       body: jsonEncode({
         "model": "gpt-3.5-turbo",
