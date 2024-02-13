@@ -38,6 +38,8 @@ dependencies:
   firebase_core: ^2.25.4
   firebase_auth: 4.17.4  # or the latest version
   provider: 6.1.1  # or the latest version
+  flutter_spinkit: ^5.2.0
+  http:
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"

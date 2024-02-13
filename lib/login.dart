@@ -1,7 +1,7 @@
-
 import 'package:cypress/auth/auth.dart';
+import 'package:cypress/loading.dart';
 import 'package:flutter/material.dart';
-import 'styles.dart';
+import 'templates/styles.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -137,37 +137,48 @@ class _LoginPageState extends State<LoginPage> {
                               ElevatedButton(
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all( const Color.fromARGB(
-                                        255, 255, 89, 89)),
+                                        255, 255, 89, 88)),
                                     shadowColor:MaterialStateProperty.all( const Color.fromARGB(
                                         255, 255, 156, 58)),
                                     foregroundColor: MaterialStateProperty.all(Colors.white70)
                                 ),
-                                onPressed: () async {
+                                onPressed: ()  {
                                   String em = email.text;
                                   String pass = password.text;
-                                  mode == "Log In" ? await UserData().signIn(em, pass).then((value) => {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoadingPage()));
+                                  () async {
+                                    mode == "Log In" ? await UserData().signIn(em, pass).then((value) => {
+                                      if (value == null){
+                                        showDialog(context: context, builder: (BuildContext context){
+                                          return dialog(context, "Annex Sever Error","Invalid credentials for log in, user may try again", [TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop(); // Close the dialog
+                                              Navigator.of(context).pop(); // Close the dialog
+                                            },
+                                            child: const Text('OK'),
+                                          ),], false);
+                                        })
+                                      }
+                                      else{
+                                        Navigator.of(context).pop()
+                                      }
+                                    }): await UserData().register(em, pass).then((value) => {
                                     if (value == null){
                                       showDialog(context: context, builder: (BuildContext context){
-                                        return dialog(context, "Annex Sever Error","Invalid credentials for log in, user may try again", [TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop(); // Close the dialog
-                                          },
-                                          child: const Text('OK'),
+                                      return dialog(context, "Annex Sever Error","Network Connectivity Issues or User creation not allowed at this time", [TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(); // Close the dialog
+                                          Navigator.of(context).pop(); // Close the dialog
+                                        },
+                                        child: const Text('OK'),
                                         ),], false);
                                       })
                                     }
-                                  }): await UserData().register(em, pass).then((value) => {
-                                    if (value == null){
-                                      showDialog(context: context, builder: (BuildContext context){
-                                        return dialog(context, "Annex Sever Error","Network Connectivity Issues or User creation not allowed at this time", [TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop(); // Close the dialog
-                                          },
-                                          child: const Text('OK'),
-                                        ),], false);
-                                      })
+                                    else{
+                                    Navigator.of(context).pop()
                                     }
-                                  });
+                                    });
+                                  }();
                                 },
                                 child:  Text(mode),
                               )

@@ -1,10 +1,11 @@
 import 'package:cypress/auth/auth.dart';
+import 'package:cypress/templates/template.dart';
 import 'package:cypress/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'styles.dart' as styles;
+import 'templates/styles.dart' as styles;
 
 const primary = styles.primary;
 void main() async{
@@ -90,15 +91,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,15 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: primary,
 
-      body: Container(
-        width: screenSize.width,
-        height: screenSize.height,
-        decoration: const BoxDecoration(
-        image:  DecorationImage(image: AssetImage("assets/bg.png"),
-        fit: BoxFit.cover
-        )
-        ),
-        child: const Wrapper() ,),
+      body: TemplatePage(
+        size: screenSize,
+        child: const Wrapper(),
+      ),
 
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -132,10 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
             // Do Abs Nothing
           });
         },
-        backgroundColor: const Color.fromARGB(255, 8, 26, 31),
+        backgroundColor: const Color.fromARGB(255, 8, 26, 30),
         foregroundColor: Colors.cyan,
         tooltip: 'Increment',
-        child: const Icon(Icons.question_answer),
+        child: const Icon(Icons.exit_to_app),
 
 
       ), // This trailing comma makes auto-formatting nicer for build meth// ods.
