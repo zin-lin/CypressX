@@ -145,40 +145,8 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: ()  {
                                   String em = email.text;
                                   String pass = password.text;
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoadingPage()));
-                                  () async {
-                                    mode == "Log In" ? await UserData().signIn(em, pass).then((value) => {
-                                      if (value == null){
-                                        showDialog(context: context, builder: (BuildContext context){
-                                          return dialog(context, "Annex Sever Error","Invalid credentials for log in, user may try again", [TextButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop(); // Close the dialog
-                                              Navigator.of(context).pop(); // Close the dialog
-                                            },
-                                            child: const Text('OK'),
-                                          ),], false);
-                                        })
-                                      }
-                                      else{
-                                        Navigator.of(context).pop()
-                                      }
-                                    }): await UserData().register(em, pass).then((value) => {
-                                    if (value == null){
-                                      showDialog(context: context, builder: (BuildContext context){
-                                      return dialog(context, "Annex Sever Error","Network Connectivity Issues or User creation not allowed at this time", [TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop(); // Close the dialog
-                                          Navigator.of(context).pop(); // Close the dialog
-                                        },
-                                        child: const Text('OK'),
-                                        ),], false);
-                                      })
-                                    }
-                                    else{
-                                    Navigator.of(context).pop()
-                                    }
-                                    });
-                                  }();
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>  LoadingPage(email: em, password: pass,mode: mode,)));
+
                                 },
                                 child:  Text(mode),
                               )

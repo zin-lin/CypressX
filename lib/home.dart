@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cypress/comicsx/books.dart';
 import 'templates/styles.dart' as styles;
 
 const primary = styles.primary;
@@ -56,54 +57,36 @@ class Home extends StatelessWidget {
                       child: Center(
                         child: Row(
                           children: [
-                            Container( height: 250, width: 200, decoration:  BoxDecoration(color: primary,
-                              borderRadius: const BorderRadius.all(Radius.circular(30)),
-                              boxShadow: [
-                                styles.shadow(const Color.fromARGB(94, 228, 34, 44))
-                              ],
-                            ),
-                              margin: const EdgeInsets.all(26),
-                              child:  Container(
-                                padding: const EdgeInsets.all(60),
-                                child:  Center(
-                                    child:
-                                    Column(
-                                      children: [
-                                        const Image(image: AssetImage("assets/book.png"),
-                                          width: 90,
-                                        ),
-                                        Container(
-                                            padding: const EdgeInsets.all(3),
-                                            child: const Text("ComicsX Template", style: TextStyle() , textAlign: TextAlign.center,))
-                                      ],
-                                    )
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> const BooksPage()));
+                              },
+                              child: Container( height: 250, width: 200, decoration:  BoxDecoration(color: primary,
+                                borderRadius: const BorderRadius.all(Radius.circular(30)),
+                                boxShadow: [
+                                  styles.shadow(const Color.fromARGB(94, 228, 34, 44))
+                                ],
+                              ),
+                                margin: const EdgeInsets.all(26),
+                                child:  Container(
+                                  padding: const EdgeInsets.all(60),
+                                  child:  Center(
+                                      child:
+                                      Column(
+                                        children: [
+                                          const Image(image: AssetImage("assets/book.png"),
+                                            width: 90,
+                                          ),
+                                          Container(
+                                              padding: const EdgeInsets.all(3),
+                                              child: const Text("ComicsX Template", style: TextStyle() , textAlign: TextAlign.center,))
+                                        ],
+                                      )
+                                  ),
                                 ),
                               ),
                             ),
-                            Container( height: 250, width: 200, decoration:  BoxDecoration(color: primary,
-                              borderRadius: const BorderRadius.all(Radius.circular(30)),
-                              boxShadow: [
-                                styles.shadow(const Color.fromARGB(94, 34, 150, 228))
-                              ],
-                            ),
-                              margin: const EdgeInsets.all(26),
-                              child:  Container(
-                                padding: const EdgeInsets.all(60),
-                                child:  Center(
-                                    child:
-                                    Column(
-                                      children: [
-                                        const Image(image: AssetImage("assets/cv.png"),
-                                          width: 100,
-                                        ),
-                                        Container(
-                                            padding: const EdgeInsets.all(3),
-                                            child: const Text("CV Template", style: TextStyle() , textAlign: TextAlign.center,))
-                                      ],
-                                    )
-                                ),
-                              ),
-                            ),
+
 
                             Container( height: 250, width: 200, decoration:  BoxDecoration(color: primary,
                               borderRadius: const BorderRadius.all(Radius.circular(30)),
